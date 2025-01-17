@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "228202207049",
+    "project_id": "enggexchangeapp",
+    "storage_bucket": "enggexchangeapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:228202207049:android:fafddf56a812720bec2c98",
+        "android_client_info": {
+          "package_name": "com.example.event_manager"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "228202207049-ht3i79nj0o29iea8fj422kacemdk7qio.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDuV8Eakzwu-Xan3wn7owTLVzUGGnc9rkg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "228202207049-ht3i79nj0o29iea8fj422kacemdk7qio.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
