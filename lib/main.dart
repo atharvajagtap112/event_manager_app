@@ -1,26 +1,39 @@
+import 'package:event_manager/Authentication/login_screen.dart';
+import 'package:event_manager/Screens/Add_Event_Screen.dart';
+import 'package:event_manager/Screens/home_page.dart';
 import 'package:event_manager/const/data.dart';
 import 'package:event_manager/widgets/Category_Card.dart';
+import 'package:event_manager/widgets/event_list.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:intl/intl.dart' show DateFormat;
 import 'dart:ui' as ui;
 
-void main() {
-  runApp(const CollegeEventApp());
+void main() async{
+
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+ 
+  runApp( const CollegeEventApp(),
+  );
 }
 
 class CollegeEventApp extends StatelessWidget {
-  const CollegeEventApp({Key? key}) : super(key: key);
+  const CollegeEventApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'College Event Manager',
       theme: ThemeData(
         useMaterial3: true,
         colorSchemeSeed: Colors.blue,
         brightness: Brightness.light,
       ),
-      home: const EventDashboard(),
+     // home:  const EventDashboard(),
+     home: const EventDashboard(),
     );
   }
 }
@@ -52,24 +65,19 @@ class Event {
 }
 
 class EventDashboard extends StatefulWidget {
-  const EventDashboard({Key? key}) : super(key: key);
+  const EventDashboard({super.key});
 
   @override
   State<EventDashboard> createState() => _EventDashboardState();
 }
 
 class _EventDashboardState extends State<EventDashboard> with SingleTickerProviderStateMixin {
-  late TabController _tabController;
-  String _searchQuery = '';
-  String _selectedCategory = 'all';
   final _scrollController = ScrollController();
-  final   
   
 
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 4, vsync: this);
   }
 
   @override
@@ -85,8 +93,8 @@ class _EventDashboardState extends State<EventDashboard> with SingleTickerProvid
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 _buildFeaturedEvent(),
-                _buildSearchBar(),
-                _buildCategories(),
+               
+               const EventList(),
                 _buildUpcomingEvents(),
               ],
             ),
@@ -191,14 +199,18 @@ class _EventDashboardState extends State<EventDashboard> with SingleTickerProvid
                   ),
                 ),
                 const SizedBox(height: 16),
-                Row(
-                  children: [
-                    _buildEventTag(Icons.calendar_today, '20 Jan'),
-                    const SizedBox(width: 16),
-                    _buildEventTag(Icons.location_on, 'Grand Auditorium'),
-                    const SizedBox(width: 16),
-                    _buildEventTag(Icons.people, '450 attending'),
-                  ],
+                SizedBox(
+                  width: double.infinity,
+                  child: Row(
+                   
+                    children: [
+                      _buildEventTag(Icons.calendar_today, '20 Jan'),
+                      const SizedBox(width: 16),
+                      _buildEventTag(Icons.location_on, 'Grand Auditorium'),
+                      
+                      
+                    ],
+                  ),
                 ),
               ],
             ),
@@ -232,49 +244,7 @@ class _EventDashboardState extends State<EventDashboard> with SingleTickerProvid
     );
   }
 
-  Widget _buildSearchBar() {
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.05),
-            blurRadius: 10,
-            offset: const Offset(0, 5),
-          ),
-        ],
-      ),
-      child: TextField(
-        decoration: InputDecoration(
-          hintText: 'Search events...',
-          prefixIcon: const Icon(Icons.search),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(16),
-            borderSide: BorderSide.none,
-          ),
-          contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
-        ),
-        onChanged: (value) => setState(() => _searchQuery = value),
-      ),
-    );
-  }
-
-  Widget _buildCategories() {
-    return Container(
-      height: 120,
-      margin: const EdgeInsets.symmetric(vertical: 16),
-      child: ListView.builder(
-        itemCount:data.categoryList.length ,
-        scrollDirection: Axis.horizontal,
-        padding: const EdgeInsets.symmetric(horizontal: 16),
-       itemBuilder: (contex, index)=> 
-          CategoryCard(categoryModel: , data.categoryList[index]),
-       
-      ),
-    );
-  }
+  
 
  
 
@@ -295,9 +265,9 @@ class _EventDashboardState extends State<EventDashboard> with SingleTickerProvid
         ListView.builder(
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
-          itemCount: events.length,
+          itemCount: data.events.length,
           padding: const EdgeInsets.all(16),
-          itemBuilder: (context, index) => _buildEventCard(events[index]),
+          itemBuilder: (context, index) => _buildEventCard(data.events[index]),
         ),
       ],
     );
@@ -428,7 +398,7 @@ class _EventDashboardState extends State<EventDashboard> with SingleTickerProvid
           scale: _scrollController.offset > 100 ? 0.0 : 1.0,
           duration: const Duration(milliseconds: 200),
           child: FloatingActionButton.extended(
-            onPressed: () {},
+            onPressed: () =>Navigator.push(context, MaterialPageRoute(builder: (context) => const AddEventScreen())),
             icon: const Icon(Icons.add),
             label: const Text('Create Event'),
           ),

@@ -1,9 +1,9 @@
 import 'package:event_manager/Models/category_model.dart';
-import 'package:event_manager/widgets/Category_Card.dart';
+import 'package:event_manager/main.dart';
 import 'package:flutter/material.dart';
 
 class data{
- static List<CategoryModel> categoryList=[
+ static  List<CategoryModel> categoryList=[
           CategoryModel(title: 'Tech' , color: Colors.red, icon: Icons.computer, id:'1'),
            CategoryModel(title: 'Cultural' , color: Colors.purple, icon: Icons.music_note, id:'2'),
        
