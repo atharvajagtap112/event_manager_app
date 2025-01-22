@@ -50,8 +50,13 @@ class AddEventController extends GetxController {
         venue: venueController.value.text,
         organizer: organizerController.value.text,
         imageUrl: "",
-        registrationLink: registrationLinkController.value.text);
+        registrationLink: registrationLinkController.value.text, 
+        date: selectedDate.value,
+        time: selectedTime.value,
 
+        
+        );
+        
        await addEventRepo.addEvent(event,selectedImage.value! );
 
 

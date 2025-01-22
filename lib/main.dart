@@ -33,7 +33,7 @@ class CollegeEventApp extends StatelessWidget {
         brightness: Brightness.light,
       ),
      // home:  const EventDashboard(),
-     home: const EventDashboard(),
+     home: const HomePage(),
     );
   }
 }
