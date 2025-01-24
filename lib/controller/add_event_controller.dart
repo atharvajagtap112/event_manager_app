@@ -1,7 +1,6 @@
 import 'package:event_manager/Models/category_model.dart';
 import 'package:event_manager/Models/event_model.dart';
-import 'package:event_manager/Repositories/add_event_repo.dart';
-import 'package:flutter/foundation.dart';
+import 'package:event_manager/Repositories/event_repo.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -24,8 +23,10 @@ class AddEventController extends GetxController {
   final TextEditingController imageUrlController = TextEditingController();
   final TextEditingController attendeesController = TextEditingController();
    final TextEditingController registrationLinkController = TextEditingController(); 
-  
-  final addEventRepo=AddEventRepo();
+   
+
+
+  final addEventRepo=EventRepo();
 
   //Image Picker
   void pickImage() async {

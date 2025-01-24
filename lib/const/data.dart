@@ -1,6 +1,34 @@
 import 'package:event_manager/Models/category_model.dart';
+import 'package:event_manager/Models/event_model.dart';
+import 'package:event_manager/Screens/event_manage_screen.dart';
 import 'package:event_manager/main.dart';
 import 'package:flutter/material.dart';
+
+class Event {
+  final String id;
+  final String title;
+  final String category;
+  final DateTime date;
+  final String time;
+  final String venue;
+  final String organizer;
+  final String imageUrl;
+  final int attendees;
+  final bool isPopular;
+
+  Event({
+    required this.id,
+    required this.title,
+    required this.category,
+    required this.date,
+    required this.time,
+    required this.venue,
+    required this.organizer,
+    required this.imageUrl,
+    required this.attendees,
+    required this.isPopular,
+  });
+}
 
 class data{
  static  List<CategoryModel> categoryList=[
@@ -11,31 +39,23 @@ class data{
           CategoryModel(title:'Academic',icon:  Icons.school,color:  Colors.green, id: '4'),
   ];
 
-  static List<Event> events = [
-    Event(
+   
+
+
+
+  static List<EventModel> events = [
+    EventModel(
       id: '1',
       title: 'Tech Innovation Summit 2025',
-      category: 'tech',
+      category: CategoryModel(title: 'Tech', color: Colors.blue, id: '1', icon: Icons.computer),
       date: DateTime(2025, 1, 20),
-      time: '10:00 AM',
+      time: TimeOfDay(hour: 9, minute: 0),
       venue: 'Grand Auditorium',
       organizer: 'Tech Innovation Hub',
       imageUrl: 'assets/tech_event.jpg',
-      attendees: 450,
-      isPopular: true,
+     registrationLink: "hdsahdkashs"
     ),
-    Event(
-      id: '2',
-      title: 'Cultural Extravaganza',
-      category: 'cultural',
-      date: DateTime(2025, 1, 25),
-      time: '6:00 PM',
-      venue: 'Open Air Theatre',
-      organizer: 'Arts & Culture Society',
-      imageUrl: 'assets/cultural_event.jpg',
-      attendees: 800,
-      isPopular: true,
-    ),
+  
     // Add more events...
   ];
 }

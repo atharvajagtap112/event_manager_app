@@ -13,7 +13,15 @@ class CategoryModel {
     required this.id,
     required this.icon,
   });
-
+  // Create from Map
+  factory CategoryModel.fromMap(Map<String, dynamic> map,) {
+    return CategoryModel(
+      id: map['id'] ?? '',
+      title: map['title'] ?? '',
+      color: _getColorFromInt(map['color'] ?? 0),
+      icon: IconData(map['icon'] ?? 0, fontFamily: 'MaterialIcons'),
+    );
+  }
   // Create from DocumentSnapshot
   factory CategoryModel.fromSnapshot(DocumentSnapshot doc) {
     final data = doc.data() as Map<String, dynamic>;

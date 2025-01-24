@@ -59,7 +59,7 @@ class EventModel {
     return EventModel(
       id: doc.id,
       title: data['title'] ?? '',
-      category: data['category'] ?? '',
+      category:CategoryModel.fromMap(   data['category'] ?? ''),
       venue: data['venue'] ?? '',
       organizer: data['organizer'] ?? '',
       imageUrl: data['imageUrl'] ?? '',

@@ -1,4 +1,4 @@
-import 'package:event_manager/Screens/Add_Event_Screen.dart';
+import 'package:event_manager/Screens/event_manage_screen.dart';
 import 'package:event_manager/main.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -24,7 +24,7 @@ class HomePage extends StatelessWidget {
   Widget _buildAppBar() {
     return SliverAppBar(
       expandedHeight: 180,
-      floating: false,
+      floating: true,
       pinned: true,
       backgroundColor: const Color(0xFF1A1A1A),
       flexibleSpace: FlexibleSpaceBar(
@@ -78,7 +78,7 @@ class HomePage extends StatelessWidget {
                 color: Colors.transparent,
                 child: InkWell(
                   borderRadius: BorderRadius.circular(24),
-                  onTap: () => Get.to(() => EventDashboard()),
+                  onTap: () => Get.to(() => const EventDashboard()),
                   child: Padding(
                     padding: const EdgeInsets.all(24),
                     child: Column(
