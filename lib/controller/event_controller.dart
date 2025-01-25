@@ -29,7 +29,9 @@ class EventController extends GetxController {
   }
   
   Future<List<EventModel>> getEventById(String id) async{
-   return eventsList.where( (event)=> event.id==id).toList();
+
+    print("length ${eventsList.length}");
+   return eventsList.where( (event)=> event.category.id==id).toList();
   }
   
 

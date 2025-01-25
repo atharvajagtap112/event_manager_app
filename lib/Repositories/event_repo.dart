@@ -23,7 +23,7 @@ class EventRepo {
   Future<List<EventModel>> getEvents() async{
     try{
       final snapshot=await _db.collection('events').get();
-      print("lengthhhhhhhh"+snapshot.docs.length.toString());
+      print("lengthhhhhhhh${snapshot.docs.length}");
       return snapshot.docs.map((e) => EventModel.fromDocumentSnapshot(e)).toList();
     }catch(e){
       throw e.toString();

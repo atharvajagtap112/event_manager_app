@@ -1,6 +1,5 @@
 import 'package:event_manager/Events/Event_Widgets/event_tag.dart';
 import 'package:event_manager/Models/event_model.dart';
-import 'package:event_manager/const/data.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 

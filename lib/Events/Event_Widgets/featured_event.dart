@@ -78,6 +78,6 @@ class FeaturedEvent extends StatelessWidget {
           ),
         ],
       ),
-    );;
+    );
   }
 }

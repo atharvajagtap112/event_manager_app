@@ -1,5 +1,4 @@
 import 'package:event_manager/Screens/event_manage_screen.dart';
-import 'package:event_manager/main.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

@@ -15,8 +15,9 @@ class EventList extends StatelessWidget {
         itemCount:data.categoryList.length ,
         scrollDirection: Axis.horizontal,
         padding: const EdgeInsets.symmetric(horizontal: 16),
-       itemBuilder: (contex, index)=> 
-          CategoryCard(categoryModel:  data.categoryList[index]),
+       itemBuilder: (contex, index) {
+        print('index: $index');
+          return CategoryCard(categoryModel:  data.categoryList[index], index: index); },
        
       ),
     );

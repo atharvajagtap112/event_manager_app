@@ -1,7 +1,9 @@
+import 'package:event_manager/Events/Event_Category_Screen.dart/academic_screen.dart';
+import 'package:event_manager/Events/Event_Category_Screen.dart/cultural_screen.dart';
+import 'package:event_manager/Events/Event_Category_Screen.dart/sports_screen.dart';
+import 'package:event_manager/Events/Event_Category_Screen.dart/tech_screen.dart';
 import 'package:event_manager/Models/category_model.dart';
 import 'package:event_manager/Models/event_model.dart';
-import 'package:event_manager/Screens/event_manage_screen.dart';
-import 'package:event_manager/main.dart';
 import 'package:flutter/material.dart';
 
 class Event {
@@ -40,7 +42,13 @@ class data{
   ];
 
    
-
+   
+   static Map<int,Widget> categoryWidgets={
+     0: TechScreen(id: '1',),
+     1:const CulturalScreen(),
+     2:const SportsScreen(),
+     3:const AcademicScreen(),
+   };
 
 
   static List<EventModel> events = [
@@ -49,7 +57,7 @@ class data{
       title: 'Tech Innovation Summit 2025',
       category: CategoryModel(title: 'Tech', color: Colors.blue, id: '1', icon: Icons.computer),
       date: DateTime(2025, 1, 20),
-      time: TimeOfDay(hour: 9, minute: 0),
+      time: const TimeOfDay(hour: 9, minute: 0),
       venue: 'Grand Auditorium',
       organizer: 'Tech Innovation Hub',
       imageUrl: 'assets/tech_event.jpg',

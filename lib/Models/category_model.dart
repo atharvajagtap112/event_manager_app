@@ -13,6 +13,8 @@ class CategoryModel {
     required this.id,
     required this.icon,
   });
+ 
+ 
   // Create from Map
   factory CategoryModel.fromMap(Map<String, dynamic> map,) {
     return CategoryModel(
@@ -22,11 +24,13 @@ class CategoryModel {
       icon: IconData(map['icon'] ?? 0, fontFamily: 'MaterialIcons'),
     );
   }
+ 
+ 
   // Create from DocumentSnapshot
   factory CategoryModel.fromSnapshot(DocumentSnapshot doc) {
     final data = doc.data() as Map<String, dynamic>;
     return CategoryModel(
-      id: doc.id,
+      id: data['id'],
       title: data['title'] ?? '',
       color: _getColorFromInt(data['color'] ?? 0),
       icon: IconData(data['icon'] ?? 0, fontFamily: 'MaterialIcons'),
@@ -39,6 +43,7 @@ class CategoryModel {
       'title': title,
       'color':color.value,
       'icon': icon.codePoint,
+      'id': id,
     };
   }
 
